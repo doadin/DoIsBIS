@@ -6,6 +6,7 @@
 ## X-License: All Rights Reserved
 ## X-Website: https://wow.curseforge.com/projects/doisbis/
 ## X-Curse-Project-ID: 1488455
+## IconTexture: Interface\AddOns\DoIsBIS\icon
 
 Data\Midnight\Season1\bis.lua
 Core.lua
