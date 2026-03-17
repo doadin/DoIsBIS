@@ -242,7 +242,7 @@ local TOKEN_SUFFIX = {
     [249360]  = "Corrupted",
 }
 
-function ResolveTokenForMyClass(tokenID)
+function AddonTable.ResolveTokenForMyClass(tokenID)
     local suffix = TOKEN_SUFFIX[tokenID]
     if not suffix then return nil end
 
