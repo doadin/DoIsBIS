@@ -141,12 +141,14 @@ eventFrame:SetScript("OnEvent", function(self, event)
                     for className, classData in pairs(AddonTable.bis) do
                         if className == idtoclass[classID] then
                             for specName, specData in pairs(classData) do
-                                for sectionName, items in pairs(specData) do
-                                    if sectionName == "O" or sectionName == "R" or sectionName == "M+" then
-                                        for _, item in ipairs(items) do
-                                            if item.name and item.name == ItemName then
-                                                local currentText = label:GetText()
-                                                label:SetText(currentText .. " " .. sectionName)
+                                if specName == idtospec[specID] then
+                                    for sectionName, items in pairs(specData) do
+                                        if sectionName == "O" or sectionName == "R" or sectionName == "M+" then
+                                            for _, item in ipairs(items) do
+                                                if item.name and item.name == ItemName then
+                                                    local currentText = label:GetText()
+                                                    label:SetText(currentText .. " " .. sectionName)
+                                                end
                                             end
                                         end
                                     end
