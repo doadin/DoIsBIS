@@ -79,7 +79,7 @@ eventFrame:SetScript("OnEvent", function()
 	--	print("You stopped moving")
 	--end
     --AddonTable.bis["PALADIN"]["HOLY"]
-    local _, classFilename, _ = UnitClass(unit)
+    local _, classFilename, _ = UnitClass("player")
     local currentSpec = GetSpecialization()
     local specID = select(1, GetSpecializationInfo(currentSpec))
     --local specName = select(2, GetSpecializationInfo(currentSpec))
