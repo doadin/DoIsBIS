@@ -1,5 +1,21 @@
 local _, AddonTable = ...
 
+local idtoclass = {
+    [1] = "Warrior",
+    [2] = "Paladin",
+    [3] = "Hunter",
+    [4] = "Rogue",
+    [5] = "Priest",
+    [6] = "Death Knight",
+    [7] = "Shaman",
+    [8] = "Mage",
+    [9] = "Warlock",
+    [10] = "Monk",
+    [11] = "Druid",
+    [12] = "Demon Hunter",
+    [13] = "Evoker",
+}
+
 local idtospec = {
     --Death Knight
     [250] = "Blood",
@@ -67,6 +83,7 @@ eventFrame:RegisterEvent("CONFIRM_DISENCHANT_ROLL")
 eventFrame:RegisterEvent("CONFIRM_LOOT_ROLL")
 eventFrame:RegisterEvent("LOOT_BIND_CONFIRM")
 eventFrame:RegisterEvent("LOOT_ITEM_AVAILABLE")
+eventFrame:RegisterEvent("LOADING_SCREEN_DISABLED")
 
 eventFrame:SetScript("OnEvent", function()
     --function(self, event, ...)
@@ -79,21 +96,29 @@ eventFrame:SetScript("OnEvent", function()
 	--	print("You stopped moving")
 	--end
     --AddonTable.bis["PALADIN"]["HOLY"]
-    local _, classFilename, _ = UnitClass("player")
+    local _, classFilename, classID = UnitClass("player")
     local currentSpec = GetSpecialization()
     local specID = select(1, GetSpecializationInfo(currentSpec))
+    --print("looting!!!!!!!")
+    --print(classFilename)
+    --print(currentSpec)
+    --print(idtospec[specID])
+    --print(idtoclass[classID])
     --local specName = select(2, GetSpecializationInfo(currentSpec))
-    if AddonTable.bis[classFilename] and AddonTable.bis[classFilename][idtospec[specID]] then
+    if AddonTable.bis[idtoclass[classID]] and AddonTable.bis[idtoclass[classID]][idtospec[specID]] then
+        --print("passed data table check")
         for i = 1, 10 do
             local button = _G["GroupLootFrame"..i]
             if button and button:IsVisible() then
+                --print("found an loot roll window")
                 local ItemName = button.Name:GetText()
+                --print(ItemName)
                 if AddonTable.ResolveTokenNameForMyClass(ItemName) then
                     ItemName = AddonTable.ResolveTokenNameForMyClass(ItemName)
                 end
                 local label = button:CreateFontString(nil, "OVERLAY", "GameFontNormal")
                 label:SetFont("Fonts\\FRIZQT__.TTF", 14, "OUTLINE")
-                label:SetPoint("CENTER")
+                label:SetPoint("CENTER", 0, -4)
                 label:SetText("")
                 label:SetTextColor(1, 1, 0)   -- yellow
                 label:SetJustifyH("LEFT")
