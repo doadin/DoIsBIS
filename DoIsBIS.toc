@@ -1,0 +1,11 @@
+## Interface: 120001
+## Version: @project-version@
+## Title: DoIsBIS
+## Notes: Is This Loot BIS?
+## Author: Doadin
+## X-License: All Rights Reserved
+## X-Website: https://wow.curseforge.com/projects/doisbis/
+## X-Curse-Project-ID: 1488455
+
+Data\Midnight\Season1\bis.lua
+Core.lua

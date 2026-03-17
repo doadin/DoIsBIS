@@ -1,0 +1,29 @@
+name: CI-ReleaseBuild
+
+on:
+  push:
+    tags:
+      - '*'
+    paths-ignore:
+      - '.github/**'
+
+env:
+  CF_API_KEY: ${{ secrets.CF_API_KEY }}
+  GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout addon
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Package Retail
+        uses: BigWigsMods/packager@master
+        with:
+            args: -g retail
+
