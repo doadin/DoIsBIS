@@ -286,23 +286,22 @@ AddonTable.bis = {
     DeathKnight = {
         ['Blood'] = {
             ['R'] = {
-                { name = "Alah'endal, the Dawnsong", id = 249296 },
+                { name = "Liferipper's Cutlass", id = 251168 },
                 { name = "Relentless Rider's Crown", id = 249970 },
                 { name = "Eternal Voidsong Chain", id = 249368 },
                 { name = "Relentless Rider's Dreadthorns", id = 249968 },
-                { name = "Draconic Nullcape", id = 249370 },
+                { name = "Defiant Defender's Drape", id = 260312 },
                 { name = "Relentless Rider's Cuirass", id = 249973 },
-                { name = "Spellbreaker's Bracers", id = 237834 },
-                { name = "Stabilizing Gemstone Bandolier", id = 251490 },
-                { name = "Relentless Rider's Bonegrasps", id = 249971 },
-                { name = "Ezzorak's Gloombind", id = 249331 },
+                { name = "Kasreth's Bindings", id = 251203 },
+                { name = "Voidclaw Gauntlets", id = 151332 },
+                { name = "Hate-Tied Waistchain", id = 249380 },
                 { name = "Relentless Rider's Legguards", id = 249969 },
                 { name = "Greaves of the Unformed", id = 249381 },
-                { name = "Bond of Light", id = 249369 },
+                { name = "Masterwork Sin'dorei Band", id = 240949 },
+                { name = "Stabilizing Gemstone Bandolier", id = 251490 },
                 { name = "Loa Worshiper's Band", id = 251513 },
                 { name = "Gaze of the Alnseer", id = 249343 },
-                { name = "Radiant Plume", id = 249806 },
-                { name = "Light Company Guidon", id = 249344 },
+                { name = "Umbral Plume", id = 260235 },
                 { name = "Heart of Ancient Hunger", id = 249342 },
             },
             ['M+'] = {
@@ -923,8 +922,7 @@ AddonTable.bis = {
                 { name = "Masterwork Sin'dorei Band", id = 240949 },
                 { name = "Shadow of the Empyrean Requiem", id = 249810 },
                 { name = "Vaelgor's Final Stare", id = 249346 },
-                { name = "Gaze of the Alnseer", id = 249343 },
-                { name = "Heart of Wind", id = 250256 },
+                { name = "Soulcatcher's Charm", id = 250223 },
             },
             ['M+'] = {
                 { name = "Ceremonial Hexblade", id = 251178 },
@@ -947,6 +945,7 @@ AddonTable.bis = {
                 { name = "Occlusion of Void", id = 251217 },
                 { name = "Purloined Wedding Ring", id = 49812 },
                 { name = "Masterwork Sin'dorei Band", id = 240949 },
+                { name = "Soulcatcher's Charm", id = 250223 },
                 { name = "Heart of Wind", id = 250256 },
                 { name = "Refueling Orb", id = 250246 },
                 { name = "Emerald Coach's Whistle", id = 193718 },
@@ -974,7 +973,6 @@ AddonTable.bis = {
                 { name = "Sin'dorei Band of Hope", id = 249919 },
                 { name = "Shadow of the Empyrean Requiem", id = 249810 },
                 { name = "Vaelgor's Final Stare", id = 249346 },
-                { name = "Gaze of the Alnseer", id = 249343 },
             },
         },
         ['Devastation'] = {
@@ -1444,6 +1442,8 @@ AddonTable.bis = {
             ['O'] = {
                 { name = "Fearsome Visage of Ra-den's Chosen", id = 250015 },
                 { name = "Masterwork Sin'dorei Amulet", id = 240950 },
+                { name = "Stabilizing Gemstone Bandolier", id = 251490 },
+                { name = "Thalassian Missive of the Quickblade", id = 245792 },
                 { name = "Aurastones of Ra-den's Chosen", id = 250013 },
                 { name = "Imperator's Banner", id = 249335 },
                 { name = "Battle Garb of Ra-den's Chosen", id = 250018 },
@@ -1465,6 +1465,8 @@ AddonTable.bis = {
             ['M+'] = {
                 { name = "Fearsome Visage of Ra-den's Chosen", id = 250015 },
                 { name = "Masterwork Sin'dorei Amulet", id = 240950 },
+                { name = "Stabilizing Gemstone Bandolier", id = 251490 },
+                { name = "Thalassian Missive of the Quickblade", id = 245792 },
                 { name = "Aurastones of Ra-den's Chosen", id = 250013 },
                 { name = "Soulhunter's Mask", id = 251161 },
                 { name = "Battle Garb of Ra-den's Chosen", id = 250018 },
@@ -1486,6 +1488,8 @@ AddonTable.bis = {
             ['R'] = {
                 { name = "Fearsome Visage of Ra-den's Chosen", id = 250015 },
                 { name = "Masterwork Sin'dorei Amulet", id = 240950 },
+                { name = "Stabilizing Gemstone Bandolier", id = 251490 },
+                { name = "Thalassian Missive of the Quickblade", id = 245792 },
                 { name = "Aurastones of Ra-den's Chosen", id = 250013 },
                 { name = "Imperator's Banner", id = 249335 },
                 { name = "Battle Garb of Ra-den's Chosen", id = 250018 },
@@ -1502,7 +1506,7 @@ AddonTable.bis = {
                 { name = "Radiant Plume", id = 249806 },
                 { name = "Gaze of the Alnseer", id = 249343 },
                 { name = "Gloom-Spattered Dreadscale", id = 249339 },
-                { name = "Ampoule of Pure Void", id = 151312 },
+                { name = "The Eternal Egg", id = 249807 },
             },
         },
         ['Mistweaver'] = {
