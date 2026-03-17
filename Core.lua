@@ -98,17 +98,31 @@ eventFrame:SetScript("OnEvent", function()
                 label:SetTextColor(1, 1, 0)   -- yellow
                 label:SetJustifyH("LEFT")
                 label:SetJustifyV("BOTTOM")
-                if AddonTable.bis[classFilename][idtospec[specID]]["O"][ItemName] then
-                    local currentText = label:GetText()
-                    label:SetText(currentText .. " O ")
-                end
-                if AddonTable.bis[classFilename][idtospec[specID]]["M+"][ItemName] then
-                    local currentText = label:GetText()
-                    label:SetText(currentText .. " M+ ")
-                end
-                if AddonTable.bis[classFilename][idtospec[specID]]["R"][ItemName] then
-                    local currentText = label:GetText()
-                    label:SetText(currentText .. " R ")
+                --if AddonTable.bis[classFilename][idtospec[specID]]["O"][ItemName] then
+                --    local currentText = label:GetText()
+                --    label:SetText(currentText .. " O ")
+                --end
+                --if AddonTable.bis[classFilename][idtospec[specID]]["M+"][ItemName] then
+                --    local currentText = label:GetText()
+                --    label:SetText(currentText .. " M+ ")
+                --end
+                --if AddonTable.bis[classFilename][idtospec[specID]]["R"][ItemName] then
+                --    local currentText = label:GetText()
+                --    label:SetText(currentText .. " R ")
+                --end
+                for className, classData in pairs(AddonTable.bis) do
+                    for specName, specData in pairs(classData) do
+                        for sectionName, items in pairs(specData) do
+                            if sectionName == "O" or sectionName == "R" or sectionName == "M+" then
+                                for _, item in ipairs(items) do
+                                    if item.name and item.name == ItemName then
+                                        local currentText = label:GetText()
+                                        label:SetText(currentText .. " " .. sectionName)
+                                    end
+                                end
+                            end
+                        end
+                    end
                 end
             end
         end
