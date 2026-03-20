@@ -325,8 +325,6 @@ AddonTable.bis = {
         ['Frost'] = {
             ['O'] = {
                 { name = "Bellamy's Final Judgement", id = 249277 },
-                { name = "Bloomforged Greataxe", id = 237842 },
-                { name = "Darkmoon Sigil: Hunt", id = 245876 },
                 { name = "Blade of the Final Twilight", id = 249281 },
                 { name = "Spellbreaker's Ultimatum", id = 237841 },
                 { name = "Darkmoon Sigil: Hunt", id = 245876 },
@@ -399,8 +397,6 @@ AddonTable.bis = {
         ['Unholy'] = {
             ['O'] = {
                 { name = "Bellamy's Final Judgement", id = 249277 },
-                { name = "Bloomforged Greataxe", id = 237842 },
-                { name = "Darkmoon Sigil: Hunt", id = 245876 },
                 { name = "Relentless Rider's Crown", id = 249970 },
                 { name = "Amulet of the Abyssal Hymn", id = 250247 },
                 { name = "Shoulderplates of Frozen Blood", id = 50234 },
@@ -607,7 +603,7 @@ AddonTable.bis = {
                 { name = "Heart of Wind", id = 250256 },
                 { name = "Gaze of the Alnseer", id = 249343 },
             },
-            ['M+'] = {
+            ['R'] = {
                 { name = "Lightless Lament", id = 260408 },
                 { name = "Spellbreaker's Warglaive", id = 237840 },
                 { name = "Darkmoon Sigil: Hunt", id = 245876 },
@@ -627,7 +623,7 @@ AddonTable.bis = {
                 { name = "Light Company Guidon", id = 249344 },
                 { name = "Gaze of the Alnseer", id = 249343 },
             },
-            ['R'] = {
+            ['M+'] = {
                 { name = "Mystakria's Harvester", id = 193717 },
                 { name = "Spellbreaker's Warglaive", id = 237840 },
                 { name = "Darkmoon Sigil: Hunt", id = 245876 },
@@ -856,7 +852,7 @@ AddonTable.bis = {
                 { name = "Belo'melorn, the Shattered Talon", id = 249283 },
                 { name = "Tome of Alnscorned Regret", id = 249922 },
             },
-            ['M+'] = {
+            ['R'] = {
                 { name = "Mask of Darkest Intent", id = 249913 },
                 { name = "Amulet of the Abyssal Hymn", id = 250247 },
                 { name = "Seedpods of the Luminous Bloom", id = 250022 },
@@ -874,7 +870,7 @@ AddonTable.bis = {
                 { name = "Belo'melorn, the Shattered Talon", id = 249283 },
                 { name = "Tome of Alnscorned Regret", id = 249922 },
             },
-            ['R'] = {
+            ['M+'] = {
                 { name = "Branches of the Luminous Bloom", id = 250024 },
                 { name = "Pendant of Aching Grief", id = 251096 },
                 { name = "Seedpods of the Luminous Bloom", id = 250022 },
@@ -1768,8 +1764,8 @@ AddonTable.bis = {
                 { name = "Greaves of the Unformed", id = 249381 },
                 { name = "Eye of Midnight", id = 249920 },
                 { name = "Sin'dorei Band of Hope", id = 249919 },
-                { name = "Gaze of the Alnseer", id = 249343 },
-                { name = "Radiant Plume", id = 249806 },
+                { name = "Algeth'ar Puzzle Box", id = 193701 },
+                { name = "Umbral Plume", id = 260235 },
             },
             ['M+'] = {
                 { name = "Liferipper's Cutlass", id = 251168 },
@@ -2195,7 +2191,7 @@ AddonTable.bis = {
                 { name = "Platinum Star Band", id = 193708 },
                 { name = "Sin'dorei Band of Hope", id = 249919 },
                 { name = "Emberwing Feather", id = 250144 },
-                { name = "Gaze of the Alnseer", id = 249343 },
+                { name = "Locus-Walker's Ribbon", id = 249809 },
             },
             ['M+'] = {
                 { name = "Belo'melorn, the Shattered Talon", id = 249283 },
@@ -2214,6 +2210,7 @@ AddonTable.bis = {
                 { name = "Bond of Light", id = 249369 },
                 { name = "Sin'dorei Band of Hope", id = 249919 },
                 { name = "Vaelgor's Final Stare", id = 249346 },
+                { name = "Locus-Walker's Ribbon", id = 249809 },
                 { name = "Gaze of the Alnseer", id = 249343 },
             },
             ['R'] = {
@@ -2372,7 +2369,7 @@ AddonTable.bis = {
                 { name = "Eye of Midnight", id = 249920 },
                 { name = "Occlusion of Void", id = 251217 },
                 { name = "Emberwing Feather", id = 250144 },
-                { name = "Gaze of the Alnseer", id = 249343 },
+                { name = "Shadow of the Empyrean Requiem", id = 249810 },
                 { name = "Splitshroud Stinger", id = 251111 },
                 { name = "Grimoire of the Eternal Light", id = 249276 },
             },
@@ -2493,7 +2490,7 @@ AddonTable.bis = {
                 { name = "Eye of Midnight", id = 249920 },
                 { name = "Signet of the Starved Beast", id = 249336 },
                 { name = "Vaelgor's Final Stare", id = 249346 },
-                { name = "Gaze of the Alnseer", id = 249343 },
+                { name = "Shadow of the Empyrean Requiem", id = 249810 },
                 { name = "Spire of the Furious Construct", id = 258047 },
             },
             ['M+'] = {
@@ -2531,7 +2528,7 @@ AddonTable.bis = {
                 { name = "Eye of Midnight", id = 249920 },
                 { name = "Signet of the Starved Beast", id = 249336 },
                 { name = "Vaelgor's Final Stare", id = 249346 },
-                { name = "Gaze of the Alnseer", id = 249343 },
+                { name = "Shadow of the Empyrean Requiem", id = 249810 },
                 { name = "Brazier of the Dissonant Dirge", id = 249286 },
             },
         },
