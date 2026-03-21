@@ -82,7 +82,7 @@ end
 
 local function CreateBiSWindow()
     local f = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
-    f:SetSize(400, 500)
+    f:SetSize(600, 600)
     f:SetPoint("CENTER")
     f:SetBackdrop({
         bgFile = "Interface/Tooltips/UI-Tooltip-Background",
@@ -151,7 +151,7 @@ local function BuildRowsForClassSpec(className, specName)
                 --local itemName = data and data.id and C_Item and C_Item.GetItemNameByID and C_Item.GetItemNameByID(data.id)
                 --itemName = itemName or ("Item " .. tostring(data.id))
                 local itemLink = select(2, GetItemInfo(data.id)) or ("item:" .. data.id)
-                table.insert(rows, { isHeader = false, text = itemLink, itemID = data.id })
+                table.insert(rows, { isHeader = false, text = itemLink, itemID = data.id, note = data.source })
             end
         end
     end
@@ -178,12 +178,17 @@ local function PopulateScrollFrame(content, rows)
 
         local fs = rowFrame:CreateFontString(nil, "OVERLAY", row.isHeader and "GameFontNormalLarge" or "GameFontNormal")
         fs:SetPoint("LEFT", 5, 0)
+        fs:SetWidth(500)
+        fs:SetWordWrap(true)
+        fs:SetNonSpaceWrap(true)
+        fs:SetJustifyH("LEFT")
+        fs:SetJustifyV("TOP")
 
         if row.isHeader then
             fs:SetText("|cffFFD100" .. row.text .. "|r")
             yOffset = yOffset - 26
         else
-            fs:SetText("• " .. row.text)
+            fs:SetText("• " .. row.text .. " " .. row.note)
 
             rowFrame:SetScript("OnEnter", function(self)
                 GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
