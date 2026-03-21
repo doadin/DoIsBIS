@@ -84,38 +84,67 @@ eventFrame:RegisterEvent("CONFIRM_LOOT_ROLL")
 eventFrame:RegisterEvent("LOOT_BIND_CONFIRM")
 eventFrame:RegisterEvent("LOOT_ITEM_AVAILABLE")
 eventFrame:RegisterEvent("LOADING_SCREEN_DISABLED")
-eventFrame:RegisterEvent("VIGNETTES_UPDATED")
+eventFrame:RegisterEvent("ADDON_LOADED")
 
-eventFrame:SetScript("OnEvent", function(self, event)
+local function EJUpdate()
     local _, classFilename, classID = UnitClass("player")
     local currentSpec = GetSpecialization()
     local specID = select(1, GetSpecializationInfo(currentSpec))
-    if not (event == "VIGNETTES_UPDATED") then
-        --function(self, event, ...)
-	    --if event == "CHAT_MSG_CHANNEL" then
-	    --	local msg, playerName = ...
-	    --	print(event, msg, playerName)
-	    --elseif event == "PLAYER_STARTED_MOVING" then
-	    --	print("You started moving")
-	    --elseif event == "PLAYER_STOPPED_MOVING" then
-	    --	print("You stopped moving")
-	    --end
-        --AddonTable.bis["PALADIN"]["HOLY"]
+    if EncounterJournalEncounterFrameInfo and EncounterJournalEncounterFrameInfo.LootContainer and EncounterJournalEncounterFrameInfo.LootContainer.ScrollBox then
+        local lootFrames = EncounterJournalEncounterFrameInfo.LootContainer.ScrollBox.view.frames
+        for _, Button in pairs(lootFrames) do
+            if Button and Button.name then
+                if not Button.DoIsBiSlabel then
+                    Button.DoIsBiSlabel = Button:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+                end
+                Button.DoIsBiSlabel:SetFont("Fonts\\FRIZQT__.TTF", 14, "OUTLINE")
+                Button.DoIsBiSlabel:SetPoint("CENTER", 0, -4)
+                Button.DoIsBiSlabel:SetText("")
+                Button.DoIsBiSlabel:SetTextColor(1, 1, 0)   -- yellow
+                Button.DoIsBiSlabel:SetJustifyH("LEFT")
+                Button.DoIsBiSlabel:SetJustifyV("BOTTOM")
+                local ItemName = Button.name:GetText()
+                ItemName = Button.itemID and GetItemInfo(Button.itemID)
+                if AddonTable.ResolveTokenNameForMyClass(ItemName) then
+                    ItemName = AddonTable.ResolveTokenNameForMyClass(ItemName)
+                end
+                if ItemName then
+                    for className, classData in pairs(AddonTable.bis) do
+                        if className == idtoclass[classID] then
+                            for specName, specData in pairs(classData) do
+                                if specName == idtospec[specID] then
+                                    for sectionName, items in pairs(specData) do
+                                        if sectionName == "O" or sectionName == "R" or sectionName == "M+" then
+                                            for _, item in ipairs(items) do
+                                                if item.name and item.name == ItemName then
+                                                    if not Button.DoIsBiSlabel:GetText() or (Button.DoIsBiSlabel:GetText() and not Button.DoIsBiSlabel:GetText():find(sectionName)) then
+                                                        local currentText = Button.DoIsBiSlabel:GetText() or ""
+                                                        Button.DoIsBiSlabel:SetText(currentText .. " " .. sectionName)
+                                                    end
+                                                end
+                                            end
+                                        end
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+end
 
-        --print("looting!!!!!!!")
-        --print(classFilename)
-        --print(currentSpec)
-        --print(idtospec[specID])
-        --print(idtoclass[classID])
-        --local specName = select(2, GetSpecializationInfo(currentSpec))
+eventFrame:SetScript("OnEvent", function(self, event, ...)
+    local _, classFilename, classID = UnitClass("player")
+    local currentSpec = GetSpecialization()
+    local specID = select(1, GetSpecializationInfo(currentSpec))
+    if event ~= "ADDON_LOADED" then
         if AddonTable.bis[idtoclass[classID]] and AddonTable.bis[idtoclass[classID]][idtospec[specID]] then
-            --print("passed data table check")
             for i = 1, 10 do
                 local button = _G["GroupLootFrame"..i]
                 if button and button:IsVisible() then
-                    --print("found an loot roll window")
                     local ItemName = button.Name:GetText()
-                    --print(ItemName)
                     if AddonTable.ResolveTokenNameForMyClass(ItemName) then
                         ItemName = AddonTable.ResolveTokenNameForMyClass(ItemName)
                     end
@@ -146,7 +175,7 @@ eventFrame:SetScript("OnEvent", function(self, event)
                                         if sectionName == "O" or sectionName == "R" or sectionName == "M+" then
                                             for _, item in ipairs(items) do
                                                 if item.name and item.name == ItemName then
-                                                    local currentText = label:GetText()
+                                                    local currentText = label:GetText() or ""
                                                     label:SetText(currentText .. " " .. sectionName)
                                                 end
                                             end
@@ -159,46 +188,14 @@ eventFrame:SetScript("OnEvent", function(self, event)
                 end
             end
         end
-    else
-        if EncounterJournalEncounterFrameInfo and EncounterJournalEncounterFrameInfo.LootContainer and EncounterJournalEncounterFrameInfo.LootContainer.ScrollBox then
-            local lootFrames = EncounterJournalEncounterFrameInfo.LootContainer.ScrollBox.view.frames
-            for _, Button in pairs(lootFrames) do
-                if Button and Button.name then
-                    if not Button.DoIsBiSlabel then
-                        Button.DoIsBiSlabel = Button:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-                    end
-                    Button.DoIsBiSlabel:SetFont("Fonts\\FRIZQT__.TTF", 14, "OUTLINE")
-                    Button.DoIsBiSlabel:SetPoint("CENTER", 0, -4)
-                    Button.DoIsBiSlabel:SetText("")
-                    Button.DoIsBiSlabel:SetTextColor(1, 1, 0)   -- yellow
-                    Button.DoIsBiSlabel:SetJustifyH("LEFT")
-                    Button.DoIsBiSlabel:SetJustifyV("BOTTOM")
-                    local ItemName = Button.name:GetText()
-                    ItemName = Button.itemID and GetItemInfo(Button.itemID)
-                    if ItemName then
-                        for className, classData in pairs(AddonTable.bis) do
-                            if className == idtoclass[classID] then
-                                for specName, specData in pairs(classData) do
-                                    if specName == idtospec[specID] then
-                                        for sectionName, items in pairs(specData) do
-                                            if sectionName == "O" or sectionName == "R" or sectionName == "M+" then
-                                                for _, item in ipairs(items) do
-                                                    if item.name and item.name == ItemName then
-                                                        if not Button.DoIsBiSlabel:GetText() or (Button.DoIsBiSlabel:GetText() and not Button.DoIsBiSlabel:GetText():find(sectionName)) then
-                                                            local currentText = Button.DoIsBiSlabel:GetText() or ""
-                                                            Button.DoIsBiSlabel:SetText(currentText .. " " .. sectionName)
-                                                        end
-                                                    end
-                                                end
-                                            end
-                                        end
-                                    end
-                                end
-                            end
-                        end
-                    end
-                end
-            end
+    end
+    if event == "ADDON_LOADED" and ... == "Blizzard_EncounterJournal" then
+        if EncounterJournalEncounterFrameInfo then
+            local sb = EncounterJournalEncounterFrameInfo.LootContainer.ScrollBar
+            sb:RegisterCallback(ScrollBoxListMixin.Event.OnScroll, function()
+                EJUpdate()
+            end)
         end
     end
 end)
+
