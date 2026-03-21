@@ -217,29 +217,38 @@ local CLASS_SLOT = {
     Hungering = "GLOVES",
     Unraveled = "SHOULDERS",
     Corrupted = "LEGS",
+    Riftbloom = "Chest",
 }
 
 local TOKEN_SUFFIX = {
     -- You fill these with actual token itemIDs
+    -- Voidwoven Priest, Mage, Warlock
     [249355]  = "Fanatical",
     [249351]  = "Hungering",
     [249363]  = "Unraveled",
     [249359]  = "Corrupted",
+    [249347]   = "Alnwoven",
 
+    -- Voidcast Hunter, Shaman, Evoker
     [249357]   = "Fanatical",
     [249353]   = "Hungering",
     [249365]   = "Unraveled",
     [249361]   = "Corrupted",
+    [249349]   = "Alncast",
 
+    -- Voidforged Warrior, Paladin, Death Knight
     [249358] = "Fanatical",
     [249354] = "Hungering",
     [249366] = "Unraveled",
     [249362] = "Corrupted",
+    [249350]   = "Alnforged",
 
+    --Voidcured Rogue, Monk, Druid, Demon Hunter
     [249356]  = "Fanatical",
     [249352]  = "Hungering",
     [249364]  = "Unraveled",
     [249360]  = "Corrupted",
+    [249348]   = "Alncured",
 }
 
 function AddonTable.ResolveTokenForMyClass(tokenID)
@@ -261,20 +270,48 @@ local SLOT_FROM_SUFFIX = {
     Hungering = "GLOVES",
     Unraveled = "SHOULDERS",
     Corrupted = "LEGS",
+    Riftbloom = "CHEST",
 }
 
 function AddonTable.ResolveTokenNameForMyClass(tokenName)
     if not tokenName then return nil end
+    local _, class = UnitClass("player")
 
     -- Extract the suffix (Fanatical, Hungering, Unraveled, Corrupted)
     local suffix = tokenName:match("(%w+)%s+Nullcore$")
+    local prefix
+    if not suffix then
+        suffix = tokenName:match("Riftbloom$")
+        prefix = tokenName:match("(%w+)%s+Riftbloom$")
+        if prefix then
+            if (class == "PRIEST" or class == "MAGE" or class == "WARLOCK") then
+                if prefix ~= "Alnwoven" then
+                    suffix = nil
+                end
+            end
+            if (class == "HUNTER" or class == "SHAMAN" or class == "EVOKER") then
+                if prefix ~= "Alncast" then
+                    suffix = nil
+                end
+            end
+            if (class == "WARRIOR" or class == "PALADIN" or class == "DEATHKNIGHT") then
+                if prefix ~= "Alnforged" then
+                    suffix = nil
+                end
+            end
+            if (class == "ROGUE" or class == "MONK" or class == "DRUID" or class == "DEMONHUNTER") then
+                if prefix ~= "Alncured" then
+                    suffix = nil
+                end
+            end
+        end
+    end
+
     if not suffix then return nil end
 
     local slot = SLOT_FROM_SUFFIX[suffix]
     if not slot then return nil end
 
-    -- Get your class
-    local _, class = UnitClass("player")
     local tier = MIDNIGHT_TIER_NAMES[class]
     if not tier then return nil end
 
