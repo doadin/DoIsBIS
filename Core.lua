@@ -105,22 +105,22 @@ local function EJUpdate()
                 Button.DoIsBiSlabel:SetJustifyV("BOTTOM")
                 local ItemName = Button.name:GetText()
                 ItemName = Button.itemID and GetItemInfo(Button.itemID)
-                if AddonTable.ResolveTokenNameForMyClass(ItemName) then
-                    ItemName = AddonTable.ResolveTokenNameForMyClass(ItemName)
-                end
+                --if AddonTable.ResolveTokenNameForMyClass(ItemName) then
+                --    ItemName = AddonTable.ResolveTokenNameForMyClass(ItemName)
+                --end
                 if ItemName then
+                    --print(ItemName)
                     for className, classData in pairs(AddonTable.bis) do
                         if className == idtoclass[classID] then
                             for specName, specData in pairs(classData) do
                                 if specName == idtospec[specID] then
-                                    for sectionName, items in pairs(specData) do
-                                        if sectionName == "O" or sectionName == "R" or sectionName == "M+" then
-                                            for _, item in ipairs(items) do
-                                                if item.name and item.name == ItemName then
-                                                    if not Button.DoIsBiSlabel:GetText() or (Button.DoIsBiSlabel:GetText() and not Button.DoIsBiSlabel:GetText():find(sectionName)) then
-                                                        local currentText = Button.DoIsBiSlabel:GetText() or ""
-                                                        Button.DoIsBiSlabel:SetText(currentText .. " " .. sectionName)
-                                                    end
+                                    for contentType, slot in pairs(specData) do
+                                        --DevTools_Dump(slot)
+                                        for _, item in pairs(slot) do
+                                            if item.name and item.name == ItemName then
+                                                if not Button.DoIsBiSlabel:GetText() or (Button.DoIsBiSlabel:GetText() and not Button.DoIsBiSlabel:GetText():find(contentType)) then
+                                                    local currentText = Button.DoIsBiSlabel:GetText() or ""
+                                                    Button.DoIsBiSlabel:SetText(currentText .. " " .. contentType)
                                                 end
                                             end
                                         end
@@ -171,13 +171,11 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
                         if className == idtoclass[classID] then
                             for specName, specData in pairs(classData) do
                                 if specName == idtospec[specID] then
-                                    for sectionName, items in pairs(specData) do
-                                        if sectionName == "O" or sectionName == "R" or sectionName == "M+" then
-                                            for _, item in ipairs(items) do
-                                                if item.name and item.name == ItemName then
-                                                    local currentText = label:GetText() or ""
-                                                    label:SetText(currentText .. " " .. sectionName)
-                                                end
+                                    for contentType, slot in pairs(specData) do
+                                        for _, item in pairs(slot) do
+                                            if item.name and item.name == ItemName then
+                                                local currentText = label:GetText() or ""
+                                                label:SetText(currentText .. " " .. contentType)
                                             end
                                         end
                                     end

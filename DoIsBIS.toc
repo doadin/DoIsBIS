@@ -8,6 +8,8 @@
 ## X-Curse-Project-ID: 1488455
 ## IconTexture: Interface\AddOns\DoIsBIS\icon
 
-Data\Midnight\Season1\bis.lua
+Data\Midnight\Season2\bis.lua
+Data\Midnight\Season2\stats.lua
+Data\Midnight\Season2\trinkets.lua
 Core.lua
 UI.lua
