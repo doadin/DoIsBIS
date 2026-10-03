@@ -497,9 +497,9 @@ local function PopulateTrinketScrollFrame(content, rows)
                     yOffset = yOffset - 26
                 else
                     if row.source then
-                        fs:SetText("• " .. row.text .. " " .. row.source.. " " .. row.sourceType)
+                        fs:SetText("• " .. row.text .. " " .. row.source.. " " .. row.sourceType .. " " .. row.tier)
                     else
-                        fs:SetText("• " .. row.text)
+                        fs:SetText("• " .. row.text .. " " .. row.tier)
                     end
     
                     rowFrame:SetScript("OnEnter", function(self)
