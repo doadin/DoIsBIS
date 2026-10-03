@@ -587,7 +587,7 @@ f:RegisterEvent("PLAYER_EQUIPMENT_CHANGED")
 f:SetScript("OnEvent", function() --self, event, slot, hasItem
     local class, spec = GetPlayerClassSpec()
     local statsData = AddonTable.stats[class][spec]
-    if statsData then
+    if statsData and window then
         if statsData["M+"] then
             window.tabFrames[1]:SetMPlusStats(statsData["M+"])
         end
