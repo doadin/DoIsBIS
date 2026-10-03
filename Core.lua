@@ -145,27 +145,29 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
                 local button = _G["GroupLootFrame"..i]
                 if button and button:IsVisible() then
                     local ItemName = button.Name:GetText()
-                    if AddonTable.ResolveTokenNameForMyClass(ItemName) then
-                        ItemName = AddonTable.ResolveTokenNameForMyClass(ItemName)
+                    --if AddonTable.ResolveTokenNameForMyClass(ItemName) then
+                    --    ItemName = AddonTable.ResolveTokenNameForMyClass(ItemName)
+                    --end
+                    if not button.label then
+                        button.label = button:CreateFontString(nil, "OVERLAY", "GameFontNormal")
                     end
-                    local label = button:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-                    label:SetFont("Fonts\\FRIZQT__.TTF", 14, "OUTLINE")
-                    label:SetPoint("CENTER", 0, -4)
-                    label:SetText("")
-                    label:SetTextColor(1, 1, 0)   -- yellow
-                    label:SetJustifyH("LEFT")
-                    label:SetJustifyV("BOTTOM")
+                    button.label:SetFont("Fonts\\FRIZQT__.TTF", 14, "OUTLINE")
+                    button.label:SetPoint("CENTER", 0, -4)
+                    button.label:SetText("")
+                    button.label:SetTextColor(1, 1, 0)   -- yellow
+                    button.label:SetJustifyH("LEFT")
+                    button.label:SetJustifyV("BOTTOM")
                     --if AddonTable.bis[classFilename][idtospec[specID]]["O"][ItemName] then
-                    --    local currentText = label:GetText()
-                    --    label:SetText(currentText .. " O ")
+                    --    local currentText = button.label:GetText()
+                    --    button.label:SetText(currentText .. " O ")
                     --end
                     --if AddonTable.bis[classFilename][idtospec[specID]]["M+"][ItemName] then
-                    --    local currentText = label:GetText()
-                    --    label:SetText(currentText .. " M+ ")
+                    --    local currentText = button.label:GetText()
+                    --    button.label:SetText(currentText .. " M+ ")
                     --end
                     --if AddonTable.bis[classFilename][idtospec[specID]]["R"][ItemName] then
-                    --    local currentText = label:GetText()
-                    --    label:SetText(currentText .. " R ")
+                    --    local currentText = button.label:GetText()
+                    --    button.label:SetText(currentText .. " R ")
                     --end
                     for className, classData in pairs(AddonTable.bis) do
                         if className == idtoclass[classID] then
@@ -174,8 +176,8 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
                                     for contentType, slot in pairs(specData) do
                                         for _, item in pairs(slot) do
                                             if item.name and item.name == ItemName then
-                                                local currentText = label:GetText() or ""
-                                                label:SetText(currentText .. " " .. contentType)
+                                                local currentText = button.label:GetText() or ""
+                                                button.label:SetText(currentText .. " " .. contentType)
                                             end
                                         end
                                     end
